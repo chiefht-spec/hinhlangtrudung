@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBER MATH: ALPHA & BETA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        body {
+            background-color: #050505;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .glitch { animation: glitch 2s linear infinite; }
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px, 0) skew(0deg); }
+            4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+            62% { transform: translate(0, 0) skew(5deg); }
+        }
+
+        .panel {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.15);
+            border-radius: 4px;
+        }
+
+        .terminal-input {
+            background: rgba(0, 50, 0, 0.3);
+            border: 1px solid #008800;
+            border-bottom: 2px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+            outline: none;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        
+        .terminal-input:focus { 
+            border-bottom: 2px solid #fff; 
+            color: #fff; 
+            background: rgba(0, 100, 0, 0.5);
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .btn-sys {
+            background: transparent;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .btn-sys:hover {
+            background: #00ff00;
+            color: #000;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .blinking-cursor::after { content: '_'; animation: blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .svg-container {
+            background: rgba(0, 30, 0, 0.5);
+            border: 1px solid #005500;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 relative flex items-center justify-center">
+    <div class="crt-overlay"></div>
+
+    <div class="max-w-6xl w-full panel p-6 md:p-8 z-10 relative">
+        <!-- HEADER -->
+        <header class="border-b border-green-800 pb-4 mb-6">
+            <h1 class="text-3xl font-bold glitch mb-1 text-green-500">>_ MISSION 01: INITIATION</h1>
+            <h2 class="text-xl text-green-400 blinking-cursor">GIAI ĐOẠN 1: QUÉT CẤU TRÚC & RÚT RA TÍNH CHẤT</h2>
+        </header>
+
+        <div class="bg-black p-5 border border-green-800 shadow-inner space-y-8">
+            <p class="text-sm md:text-base text-gray-300">
+                [SYSTEM LOG] Đặc vụ hãy quan sát kỹ 2 khối dữ liệu, điền tên các yếu tố. Sau đó dựa vào trực giác không gian để giải mã KẾT LUẬN về tính chất của Lăng trụ đứng.
+            </p>
+
+            <!-- KHUNG CHỨA 2 KHỐI -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- ================= KHỐI ALPHA ================= -->
+                <div class="border border-green-900 bg-green-900 bg-opacity-10 p-6 relative">
+                    <div class="absolute -top-3 left-4 bg-black px-2 text-green-500 font-bold tracking-widest">[ KHỐI ALPHA ]</div>
+                    
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="svg-container mb-2">
+                            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <filter id="glow">
+                                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <line x1="100" y1="30" x2="100" y2="120" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <line x1="100" y1="120" x2="50" y2="170" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <line x1="100" y1="120" x2="150" y2="170" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <polygon points="50,80 150,80 100,30" fill="rgba(0, 255, 0, 0.15)" />
+                                <polygon points="50,80 150,80 150,170 50,170" fill="rgba(0, 255, 0, 0.05)" />
+                                <g filter="url(#glow)">
+                                    <line x1="50" y1="80" x2="150" y2="80" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="150" y1="80" x2="100" y2="30" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="100" y1="30" x2="50" y2="80" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="50" y1="80" x2="50" y2="170" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="150" y1="80" x2="150" y2="170" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="50" y1="170" x2="150" y2="170" stroke="#00ff00" stroke-width="2.5" />
+                                </g>
+                                <circle cx="50" cy="80" r="3" fill="#fff" filter="url(#glow)" /> <text x="35" y="85" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">A</text>
+                                <circle cx="150" cy="80" r="3" fill="#fff" filter="url(#glow)" /> <text x="160" y="85" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">B</text>
+                                <circle cx="100" cy="30" r="3" fill="#fff" filter="url(#glow)" /> <text x="95" y="20" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">C</text>
+                                <circle cx="50" cy="170" r="3" fill="#fff" filter="url(#glow)" /> <text x="35" y="175" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">D</text>
+                                <circle cx="150" cy="170" r="3" fill="#fff" filter="url(#glow)" /> <text x="160" y="175" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">E</text>
+                                <circle cx="100" cy="120" r="3" fill="#fff" filter="url(#glow)" /> <text x="95" y="110" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">F</text>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-green-600">(Định dạng: Lăng trụ đứng tam giác)</span>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN MẶT ĐÁY (2 mặt):</span>
+                            <div class="flex gap-2"><input type="text" id="a-base1" class="terminal-input w-20 py-1" placeholder="---"><input type="text" id="a-base2" class="terminal-input w-20 py-1" placeholder="---"></div>
+                        </div>
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN MẶT BÊN (3 mặt):</span>
+                            <div class="flex gap-2"><input type="text" id="a-face1" class="terminal-input w-20 py-1" placeholder="----"><input type="text" id="a-face2" class="terminal-input w-20 py-1" placeholder="----"><input type="text" id="a-face3" class="terminal-input w-20 py-1" placeholder="----"></div>
+                        </div>
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN CẠNH BÊN (3 cạnh):</span>
+                            <div class="flex gap-2"><input type="text" id="a-le1" class="terminal-input w-16 py-1" placeholder="--"><input type="text" id="a-le2" class="terminal-input w-16 py-1" placeholder="--"><input type="text" id="a-le3" class="terminal-input w-16 py-1" placeholder="--"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= KHỐI BETA ================= -->
+                <div class="border border-green-900 bg-green-900 bg-opacity-10 p-6 relative">
+                    <div class="absolute -top-3 left-4 bg-black px-2 text-green-500 font-bold tracking-widest">[ KHỐI BETA ]</div>
+                    
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="svg-container mb-2">
+                            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <filter id="glow2">
+                                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <line x1="70" y1="30" x2="70" y2="120" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <line x1="70" y1="120" x2="50" y2="160" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <line x1="70" y1="120" x2="130" y2="120" stroke="#006600" stroke-width="2" stroke-dasharray="6,4" />
+                                <polygon points="50,70 150,70 130,30 70,30" fill="rgba(0, 255, 0, 0.15)" />
+                                <polygon points="50,70 150,70 150,160 50,160" fill="rgba(0, 255, 0, 0.05)" />
+                                <polygon points="150,70 130,30 130,120 150,160" fill="rgba(0, 255, 0, 0.1)" />
+                                <g filter="url(#glow2)">
+                                    <line x1="50" y1="70" x2="150" y2="70" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="150" y1="70" x2="130" y2="30" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="130" y1="30" x2="70" y2="30" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="70" y1="30" x2="50" y2="70" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="50" y1="70" x2="50" y2="160" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="150" y1="70" x2="150" y2="160" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="130" y1="30" x2="130" y2="120" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="50" y1="160" x2="150" y2="160" stroke="#00ff00" stroke-width="2.5" />
+                                    <line x1="150" y1="160" x2="130" y2="120" stroke="#00ff00" stroke-width="2.5" />
+                                </g>
+                                <circle cx="50" cy="70" r="3" fill="#fff" filter="url(#glow2)"/> <text x="35" y="75" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">A</text>
+                                <circle cx="150" cy="70" r="3" fill="#fff" filter="url(#glow2)"/> <text x="160" y="75" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">B</text>
+                                <circle cx="130" cy="30" r="3" fill="#fff" filter="url(#glow2)"/> <text x="135" y="25" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">C</text>
+                                <circle cx="70" cy="30" r="3" fill="#fff" filter="url(#glow2)"/> <text x="60" y="25" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">D</text>
+                                <circle cx="50" cy="160" r="3" fill="#fff" filter="url(#glow2)"/> <text x="35" y="165" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">M</text>
+                                <circle cx="150" cy="160" r="3" fill="#fff" filter="url(#glow2)"/> <text x="160" y="165" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">N</text>
+                                <circle cx="130" cy="120" r="3" fill="#fff" filter="url(#glow2)"/> <text x="135" y="115" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">P</text>
+                                <circle cx="70" cy="120" r="3" fill="#fff" filter="url(#glow2)"/> <text x="60" y="115" fill="#fff" font-family="monospace" font-weight="bold" font-size="16">Q</text>
+                            </svg>
+                        </div>
+                        <span class="text-xs text-green-600">(Định dạng: Lăng trụ đứng tứ giác)</span>
+                    </div>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN MẶT ĐÁY (2 mặt):</span>
+                            <div class="flex gap-2"><input type="text" id="b-base1" class="terminal-input w-24 py-1" placeholder="----"><input type="text" id="b-base2" class="terminal-input w-24 py-1" placeholder="----"></div>
+                        </div>
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN MẶT BÊN (4 mặt):</span>
+                            <div class="flex flex-wrap gap-2"><input type="text" id="b-face1" class="terminal-input w-20 py-1" placeholder="----"><input type="text" id="b-face2" class="terminal-input w-20 py-1" placeholder="----"><input type="text" id="b-face3" class="terminal-input w-20 py-1" placeholder="----"><input type="text" id="b-face4" class="terminal-input w-20 py-1" placeholder="----"></div>
+                        </div>
+                        <div class="bg-black p-3 border border-green-900 hover:border-green-500 transition-colors">
+                            <span class="text-green-400 font-bold block mb-2">>_ NHẬN DIỆN CẠNH BÊN (4 cạnh):</span>
+                            <div class="flex gap-2"><input type="text" id="b-le1" class="terminal-input w-16 py-1" placeholder="--"><input type="text" id="b-le2" class="terminal-input w-16 py-1" placeholder="--"><input type="text" id="b-le3" class="terminal-input w-16 py-1" placeholder="--"><input type="text" id="b-le4" class="terminal-input w-16 py-1" placeholder="--"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= KẾT LUẬN TÍNH CHẤT ================= -->
+            <div class="border-2 border-green-500 bg-green-900 bg-opacity-20 p-6 md:p-8 relative mt-6 shadow-[0_0_15px_rgba(0,255,0,0.1)]">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-black px-4 py-1 text-green-400 font-bold tracking-widest border border-green-500 rounded-full">
+                    [ PHÂN TÍCH TÍNH CHẤT LÕI ]
+                </div>
+                
+                <p class="mb-6 text-gray-300 text-center text-sm md:text-base italic">>_ Từ việc quan sát cấu tạo của 2 khối Alpha & Beta ở trên, hãy điền từ thích hợp vào chỗ trống để rút ra kết luận chung:</p>
+                
+                <div class="space-y-6 max-w-3xl mx-auto">
+                    <!-- Tính chất Mặt bên -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black p-4 border border-green-800 rounded">
+                        <span class="text-green-400 font-bold text-lg"><span class="text-white">1.</span> Các MẶT BÊN của Lăng trụ đứng đều là:</span>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="prop-faces" class="terminal-input w-48 py-2 text-lg font-bold text-yellow-300" placeholder="HÌNH ...............">
+                        </div>
+                    </div>
+
+                    <!-- Tính chất Cạnh bên -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black p-4 border border-green-800 rounded">
+                        <span class="text-green-400 font-bold text-lg"><span class="text-white">2.</span> Các CẠNH BÊN luôn song song và:</span>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="prop-edges" class="terminal-input w-48 py-2 text-lg font-bold text-yellow-300" placeholder="............... NHAU">
+                        </div>
+                    </div>
+
+                    <!-- Tính chất Mặt đáy -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black p-4 border border-green-800 rounded">
+                        <span class="text-green-400 font-bold text-lg"><span class="text-white">3.</span> Hai MẶT ĐÁY luôn song song và:</span>
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="prop-bases" class="terminal-input w-48 py-2 text-lg font-bold text-yellow-300" placeholder="............... NHAU">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NÚT GỬI & THÔNG BÁO -->
+            <button id="submit-btn" onclick="checkAll()" class="btn-sys w-full hover:bg-green-500 py-4 text-xl mt-4 transition-all duration-300 shadow-[0_0_10px_#00ff00]">
+                [ ENTER ] XÁC THỰC TOÀN BỘ CẤU TRÚC & TÍNH CHẤT
+            </button>
+            
+            <div id="msg-box" class="mt-4 p-4 hidden border transition-all duration-300">
+                <p id="msg-text" class="font-bold text-left text-base"></p>
+            </div>
+
+            <!-- CHỨNG NHẬN -->
+            <div id="certificate-panel" class="hidden mt-8 p-6 border-2 border-green-400 bg-green-900 bg-opacity-30 relative shadow-[0_0_30px_rgba(0,255,0,0.3)] text-center">
+                <div class="absolute -top-3 left-4 bg-black px-2 text-green-400 font-bold tracking-widest">[ HỒ SƠ LƯU TRỮ HỆ THỐNG ]</div>
+                <h3 class="text-3xl text-white mb-2 font-bold glitch" style="animation-duration: 3s;">TÍNH CHẤT ĐÃ ĐƯỢC MỞ KHÓA!</h3>
+                <p class="text-gray-200 mb-4 border-b border-green-600 pb-4 inline-block text-lg">
+                    Bạn đã nắm vững: <span class="text-yellow-400 font-bold">Mặt bên là HÌNH CHỮ NHẬT</span> | <span class="text-yellow-400 font-bold">Cạnh bên BẰNG NHAU</span> | <span class="text-yellow-400 font-bold">Hai đáy BẰNG NHAU</span>
+                </p>
+                <p class="text-green-300 mt-2 animate-pulse">>> HỆ THỐNG SẴN SÀNG CHO NHIỆM VỤ TÍNH TOÁN THỂ TÍCH...</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Hàm chuẩn hóa chuỗi đỉnh (VD: AB = BA)
+        function normalizeStr(str) { return str.trim().toUpperCase().split('').sort().join(''); }
+        function val(id) { return document.getElementById(id).value; }
+
+        // Hàm xóa dấu tiếng Việt để chấm điểm linh hoạt phần Tính chất
+        function removeVietnameseTones(str) {
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+            str = str.replace(/đ/g,"d");
+            str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "a");
+            str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "e");
+            str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "i");
+            str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "o");
+            str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "u");
+            str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "y");
+            str = str.replace(/Đ/g, "d");
+            return str.toLowerCase().trim();
+        }
+
+        function checkArray(userArr, correctArr) {
+            let u = userArr.map(normalizeStr).sort();
+            let c = correctArr.map(normalizeStr).sort();
+            return JSON.stringify(u) === JSON.stringify(c);
+        }
+
+        function checkAll() {
+            const msgBox = document.getElementById('msg-box');
+            const msgText = document.getElementById('msg-text');
+            
+            // Dữ liệu Alpha
+            const aBases = [val('a-base1'), val('a-base2')];
+            const aFaces = [val('a-face1'), val('a-face2'), val('a-face3')];
+            const aLatEdges = [val('a-le1'), val('a-le2'), val('a-le3')];
+
+            // Dữ liệu Beta
+            const bBases = [val('b-base1'), val('b-base2')];
+            const bFaces = [val('b-face1'), val('b-face2'), val('b-face3'), val('b-face4')];
+            const bLatEdges = [val('b-le1'), val('b-le2'), val('b-le3'), val('b-le4')];
+
+            // Dữ liệu Tính chất
+            const pFacesRaw = val('prop-faces');
+            const pEdgesRaw = val('prop-edges');
+            const pBasesRaw = val('prop-bases');
+            
+            const pFaces = removeVietnameseTones(pFacesRaw);
+            const pEdges = removeVietnameseTones(pEdgesRaw);
+            const pBases = removeVietnameseTones(pBasesRaw);
+
+            // Kiểm tra rỗng toàn bộ
+            const allInputs = [...aBases, ...aFaces, ...aLatEdges, ...bBases, ...bFaces, ...bLatEdges, pFacesRaw, pEdgesRaw, pBasesRaw];
+            if (allInputs.includes('')) {
+                msgBox.className = "mt-4 p-4 block border border-red-500 bg-red-900 bg-opacity-30";
+                msgText.className = "font-bold text-center text-lg text-red-500";
+                msgText.innerHTML = ">> LỖI: CÒN THIẾU DỮ LIỆU! HÃY ĐIỀN KÍN MỌI Ô TRỐNG TRƯỚC KHI XÁC THỰC.";
+                return;
+            }
+
+            // --- CHẤM ĐIỂM ALPHA & BETA ---
+            const isABases = checkArray(aBases, ["ABC", "DEF"]);
+            const isAFaces = checkArray(aFaces, ["ABED", "BCFE", "ACFD"]);
+            const isALatEdges = checkArray(aLatEdges, ["AD", "BE", "CF"]);
+            
+            const isBBases = checkArray(bBases, ["ABCD", "MNPQ"]);
+            const isBFaces = checkArray(bFaces, ["ABNM", "BCPN", "CDQP", "ADQM"]);
+            const isBLatEdges = checkArray(bLatEdges, ["AM", "BN", "CP", "DQ"]);
+            
+            // --- CHẤM ĐIỂM TÍNH CHẤT ---
+            // Chấp nhận: "chữ nhật", "hinh chu nhat"
+            const isPFaces = pFaces.includes('chu nhat');
+            // Chấp nhận: "bằng", "bằng nhau"
+            const isPEdges = pEdges.includes('bang') || pEdges.includes('bang nhau');
+            const isPBases = pBases.includes('bang') || pBases.includes('bang nhau');
+
+            // --- TỔNG KẾT ---
+            if (isABases && isAFaces && isALatEdges && 
+                isBBases && isBFaces && isBLatEdges && 
+                isPFaces && isPEdges && isPBases) {
+                
+                // ĐÚNG 100%
+                msgBox.className = "hidden"; // Ẩn lỗi
+                document.getElementById('certificate-panel').classList.remove('hidden');
+                document.getElementById('submit-btn').classList.add('hidden');
+                
+                // Hiệu ứng đổi màu viền các input tính chất sang xanh lá
+                document.getElementById('prop-faces').className = "terminal-input w-48 py-2 text-lg font-bold text-green-400 border-green-400";
+                document.getElementById('prop-edges').className = "terminal-input w-48 py-2 text-lg font-bold text-green-400 border-green-400";
+                document.getElementById('prop-bases').className = "terminal-input w-48 py-2 text-lg font-bold text-green-400 border-green-400";
+
+            } else {
+                // SAI MỘT TRONG CÁC PHẦN
+                document.getElementById('certificate-panel').classList.add('hidden');
+                msgBox.className = "mt-4 p-4 block border border-red-500 bg-red-900 bg-opacity-30 glitch";
+                msgText.className = "text-base text-red-400";
+                
+                let errorDetails = "<div class='text-center text-lg mb-2 font-bold text-red-500'>>> PHÁT HIỆN LỖI LẬP LUẬN:</div><ul class='list-disc pl-5 space-y-1 mb-4'>";
+                
+                // Lỗi nhận diện khối
+                if (!isABases || !isAFaces || !isALatEdges) errorDetails += "<li><span class='text-yellow-400'>[KHỐI ALPHA]</span> Nhận diện các mặt/cạnh chưa chính xác.</li>";
+                if (!isBBases || !isBFaces || !isBLatEdges) errorDetails += "<li><span class='text-yellow-400'>[KHỐI BETA]</span> Nhận diện các mặt/cạnh chưa chính xác.</li>";
+                
+                // Lỗi tính chất
+                if (!isPFaces) errorDetails += "<li><span class='text-cyan-400'>[TÍNH CHẤT 1]</span> Quan sát các mặt bên ABED, BCFE... xem nó là hình gì? (Gợi ý: 2 chữ)</li>";
+                if (!isPEdges) errorDetails += "<li><span class='text-cyan-400'>[TÍNH CHẤT 2]</span> Chiều dài các cạnh bên AD, BE, CF như thế nào với nhau?</li>";
+                if (!isPBases) errorDetails += "<li><span class='text-cyan-400'>[TÍNH CHẤT 3]</span> Hai mặt đáy (trên và dưới) có kích thước ra sao so với nhau?</li>";
+                
+                errorDetails += "</ul><div class='mt-2 text-center text-yellow-400'>>> HÃY KIỂM TRA LẠI VÀ THỬ LẠI! <<</div>";
+                msgText.innerHTML = errorDetails;
+                
+                setTimeout(() => { msgBox.classList.remove('glitch'); }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
